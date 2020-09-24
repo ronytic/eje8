@@ -12,7 +12,7 @@
     <tbody>
 
         <?php
-        $i = 0;
+        $i = $desde;
         foreach ($datosProductos as $dp) {
             $i++;
             ?>
@@ -28,9 +28,6 @@
                     <a href="<?= base_url() ?>producto/modificar" class="btn btn-xs btn-warning">Modificar</a>
                     <a href="<?= base_url() ?>producto/eliminar" class="btn btn-xs btn-danger">Eliminar</a>
 
-
-
-
                 </td>
             </tr>
 
@@ -41,3 +38,7 @@
 
     </tbody>
 </table>
+
+<?php
+echo $this->pagination->create_links();
+?>

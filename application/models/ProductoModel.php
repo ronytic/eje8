@@ -21,7 +21,7 @@ class ProductoModel extends CI_Model
     }
 
 
-    public function seleccionar()
+    public function seleccionar($cantidad = "", $desde = "0")
     {
 
         // $valores = "' OR '1'='1 ";
@@ -30,6 +30,11 @@ class ProductoModel extends CI_Model
         // $this->db->where('nombre', $valores);
         $this->db->where('activo', 1);
         $this->db->order_by('nombre');
+
+        if ($cantidad != "") {
+            $this->db->limit($cantidad, $desde);
+        }
+
         $query = $this->db->get('producto');
         return $query->result();
     }
