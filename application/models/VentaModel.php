@@ -25,4 +25,24 @@ class VentaModel extends CI_Model
     {
         return $this->db->insert_id();
     }
+
+    public function seleccionar($cantidad = "", $desde = "0")
+    {
+
+        // $valores = "' OR '1'='1 ";
+
+        $this->db->select('*');
+        // $this->db->where('nombre', $valores);
+        $this->db->where('activo', 1);
+
+
+        if ($cantidad != "") {
+            $this->db->limit($cantidad, $desde);
+        }
+
+
+
+        $query = $this->db->get('venta');
+        return $query->result();
+    }
 }
